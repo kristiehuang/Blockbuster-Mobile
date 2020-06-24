@@ -17,6 +17,9 @@
 		3ABC2D5424A3B84D0024C9B8 /* Blockbuster_MobileUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABC2D5324A3B84D0024C9B8 /* Blockbuster_MobileUITests.m */; };
 		3ABC2D6324A3BBAA0024C9B8 /* MoviesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABC2D6224A3BBAA0024C9B8 /* MoviesViewController.m */; };
 		3AC88ABF24A3F336003FDA23 /* MovieCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC88ABE24A3F336003FDA23 /* MovieCell.m */; };
+		738671487BC65927A454A797 /* Pods_Blockbuster_Mobile_Blockbuster_MobileUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B9BBFF30DF1044BBF806FFD /* Pods_Blockbuster_Mobile_Blockbuster_MobileUITests.framework */; };
+		ACC198FBF1A11EB2B995D9C9 /* Pods_Blockbuster_Mobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 750B4C8A220EEEC5B6786FDF /* Pods_Blockbuster_Mobile.framework */; };
+		C92903C6D5B348E02C3B383E /* Pods_Blockbuster_MobileTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D9C5EF6A189D964E69434BD /* Pods_Blockbuster_MobileTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		12519C8FEDCE1B25C22AB1FA /* Pods-Blockbuster-Mobile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blockbuster-Mobile.debug.xcconfig"; path = "Target Support Files/Pods-Blockbuster-Mobile/Pods-Blockbuster-Mobile.debug.xcconfig"; sourceTree = "<group>"; };
+		2641CA8EF4F159F72E91C51F /* Pods-Blockbuster-Mobile-Blockbuster-MobileUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blockbuster-Mobile-Blockbuster-MobileUITests.release.xcconfig"; path = "Target Support Files/Pods-Blockbuster-Mobile-Blockbuster-MobileUITests/Pods-Blockbuster-Mobile-Blockbuster-MobileUITests.release.xcconfig"; sourceTree = "<group>"; };
 		3ABC2D2924A3B84D0024C9B8 /* Blockbuster-Mobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Blockbuster-Mobile.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3ABC2D2C24A3B84D0024C9B8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3ABC2D2D24A3B84D0024C9B8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -57,6 +62,13 @@
 		3ABC2D6224A3BBAA0024C9B8 /* MoviesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MoviesViewController.m; sourceTree = "<group>"; };
 		3AC88ABD24A3F336003FDA23 /* MovieCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MovieCell.h; sourceTree = "<group>"; };
 		3AC88ABE24A3F336003FDA23 /* MovieCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MovieCell.m; sourceTree = "<group>"; };
+		6D9C5EF6A189D964E69434BD /* Pods_Blockbuster_MobileTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Blockbuster_MobileTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		750B4C8A220EEEC5B6786FDF /* Pods_Blockbuster_Mobile.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Blockbuster_Mobile.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		84AE0DD253CD3508706F75C8 /* Pods-Blockbuster-MobileTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blockbuster-MobileTests.release.xcconfig"; path = "Target Support Files/Pods-Blockbuster-MobileTests/Pods-Blockbuster-MobileTests.release.xcconfig"; sourceTree = "<group>"; };
+		8B9BBFF30DF1044BBF806FFD /* Pods_Blockbuster_Mobile_Blockbuster_MobileUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Blockbuster_Mobile_Blockbuster_MobileUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		970AECD4503D01350B58814D /* Pods-Blockbuster-Mobile-Blockbuster-MobileUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blockbuster-Mobile-Blockbuster-MobileUITests.debug.xcconfig"; path = "Target Support Files/Pods-Blockbuster-Mobile-Blockbuster-MobileUITests/Pods-Blockbuster-Mobile-Blockbuster-MobileUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		9BBF262D36E461AFB5A7F3C8 /* Pods-Blockbuster-Mobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blockbuster-Mobile.release.xcconfig"; path = "Target Support Files/Pods-Blockbuster-Mobile/Pods-Blockbuster-Mobile.release.xcconfig"; sourceTree = "<group>"; };
+		E7CC86ECD2DB7134DC71CC02 /* Pods-Blockbuster-MobileTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blockbuster-MobileTests.debug.xcconfig"; path = "Target Support Files/Pods-Blockbuster-MobileTests/Pods-Blockbuster-MobileTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACC198FBF1A11EB2B995D9C9 /* Pods_Blockbuster_Mobile.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C92903C6D5B348E02C3B383E /* Pods_Blockbuster_MobileTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				738671487BC65927A454A797 /* Pods_Blockbuster_Mobile_Blockbuster_MobileUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,6 +106,8 @@
 				3ABC2D4724A3B84D0024C9B8 /* Blockbuster-MobileTests */,
 				3ABC2D5224A3B84D0024C9B8 /* Blockbuster-MobileUITests */,
 				3ABC2D2A24A3B84D0024C9B8 /* Products */,
+				C6E9FA31BADC70B048FA3440 /* Pods */,
+				673AD00705C54FDD27C2075D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -166,6 +183,30 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		673AD00705C54FDD27C2075D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				750B4C8A220EEEC5B6786FDF /* Pods_Blockbuster_Mobile.framework */,
+				8B9BBFF30DF1044BBF806FFD /* Pods_Blockbuster_Mobile_Blockbuster_MobileUITests.framework */,
+				6D9C5EF6A189D964E69434BD /* Pods_Blockbuster_MobileTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C6E9FA31BADC70B048FA3440 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				12519C8FEDCE1B25C22AB1FA /* Pods-Blockbuster-Mobile.debug.xcconfig */,
+				9BBF262D36E461AFB5A7F3C8 /* Pods-Blockbuster-Mobile.release.xcconfig */,
+				970AECD4503D01350B58814D /* Pods-Blockbuster-Mobile-Blockbuster-MobileUITests.debug.xcconfig */,
+				2641CA8EF4F159F72E91C51F /* Pods-Blockbuster-Mobile-Blockbuster-MobileUITests.release.xcconfig */,
+				E7CC86ECD2DB7134DC71CC02 /* Pods-Blockbuster-MobileTests.debug.xcconfig */,
+				84AE0DD253CD3508706F75C8 /* Pods-Blockbuster-MobileTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -173,9 +214,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3ABC2D5824A3B84D0024C9B8 /* Build configuration list for PBXNativeTarget "Blockbuster-Mobile" */;
 			buildPhases = (
+				FB7EEC121A976A4DF6104EB1 /* [CP] Check Pods Manifest.lock */,
 				3ABC2D2524A3B84D0024C9B8 /* Sources */,
 				3ABC2D2624A3B84D0024C9B8 /* Frameworks */,
 				3ABC2D2724A3B84D0024C9B8 /* Resources */,
+				0B5C2D3753364ACBEC05C057 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -190,6 +233,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3ABC2D5B24A3B84D0024C9B8 /* Build configuration list for PBXNativeTarget "Blockbuster-MobileTests" */;
 			buildPhases = (
+				C1D1B441EDA6869944C45F26 /* [CP] Check Pods Manifest.lock */,
 				3ABC2D4024A3B84D0024C9B8 /* Sources */,
 				3ABC2D4124A3B84D0024C9B8 /* Frameworks */,
 				3ABC2D4224A3B84D0024C9B8 /* Resources */,
@@ -208,9 +252,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3ABC2D5E24A3B84D0024C9B8 /* Build configuration list for PBXNativeTarget "Blockbuster-MobileUITests" */;
 			buildPhases = (
+				CE929C2FFF64D88AFF20C80F /* [CP] Check Pods Manifest.lock */,
 				3ABC2D4B24A3B84D0024C9B8 /* Sources */,
 				3ABC2D4C24A3B84D0024C9B8 /* Frameworks */,
 				3ABC2D4D24A3B84D0024C9B8 /* Resources */,
+				EE159D987D7AE0B5D3EC9BAB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -290,6 +336,109 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0B5C2D3753364ACBEC05C057 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Blockbuster-Mobile/Pods-Blockbuster-Mobile-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Blockbuster-Mobile/Pods-Blockbuster-Mobile-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Blockbuster-Mobile/Pods-Blockbuster-Mobile-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C1D1B441EDA6869944C45F26 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Blockbuster-MobileTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CE929C2FFF64D88AFF20C80F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Blockbuster-Mobile-Blockbuster-MobileUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EE159D987D7AE0B5D3EC9BAB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Blockbuster-Mobile-Blockbuster-MobileUITests/Pods-Blockbuster-Mobile-Blockbuster-MobileUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Blockbuster-Mobile-Blockbuster-MobileUITests/Pods-Blockbuster-Mobile-Blockbuster-MobileUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Blockbuster-Mobile-Blockbuster-MobileUITests/Pods-Blockbuster-Mobile-Blockbuster-MobileUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FB7EEC121A976A4DF6104EB1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Blockbuster-Mobile-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3ABC2D2524A3B84D0024C9B8 /* Sources */ = {
@@ -467,6 +616,7 @@
 		};
 		3ABC2D5924A3B84D0024C9B8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 12519C8FEDCE1B25C22AB1FA /* Pods-Blockbuster-Mobile.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -484,6 +634,7 @@
 		};
 		3ABC2D5A24A3B84D0024C9B8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9BBF262D36E461AFB5A7F3C8 /* Pods-Blockbuster-Mobile.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -501,6 +652,7 @@
 		};
 		3ABC2D5C24A3B84D0024C9B8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E7CC86ECD2DB7134DC71CC02 /* Pods-Blockbuster-MobileTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -521,6 +673,7 @@
 		};
 		3ABC2D5D24A3B84D0024C9B8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 84AE0DD253CD3508706F75C8 /* Pods-Blockbuster-MobileTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -541,6 +694,7 @@
 		};
 		3ABC2D5F24A3B84D0024C9B8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 970AECD4503D01350B58814D /* Pods-Blockbuster-Mobile-Blockbuster-MobileUITests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 45VCQ885ZT;
@@ -559,6 +713,7 @@
 		};
 		3ABC2D6024A3B84D0024C9B8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2641CA8EF4F159F72E91C51F /* Pods-Blockbuster-Mobile-Blockbuster-MobileUITests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 45VCQ885ZT;

@@ -1,0 +1,6 @@
+framework module Pods_Blockbuster_Mobile {
+  umbrella header "Pods-Blockbuster-Mobile-umbrella.h"
+
+  export *
+  module * { export * }
+}
