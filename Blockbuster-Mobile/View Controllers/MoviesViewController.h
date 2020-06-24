@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  MoviesViewController.h
 //  Blockbuster-Mobile
 //
 //  Created by Kristie Huang on 6/24/20.
@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+NS_ASSUME_NONNULL_BEGIN
 
+@interface MoviesViewController : UIViewController
 
 @end
 
+NS_ASSUME_NONNULL_END
