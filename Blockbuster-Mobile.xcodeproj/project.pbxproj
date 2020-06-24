@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -127,11 +127,11 @@
 				3ABC2D6624A3BC190024C9B8 /* Models */,
 				3ABC2D6524A3BC140024C9B8 /* Views */,
 				3ABC2D6424A3BC0F0024C9B8 /* View Controllers */,
+				3ABC2D3524A3B84D0024C9B8 /* Main.storyboard */,
 				3ABC2D2C24A3B84D0024C9B8 /* AppDelegate.h */,
 				3ABC2D2D24A3B84D0024C9B8 /* AppDelegate.m */,
 				3ABC2D2F24A3B84D0024C9B8 /* SceneDelegate.h */,
 				3ABC2D3024A3B84D0024C9B8 /* SceneDelegate.m */,
-				3ABC2D3524A3B84D0024C9B8 /* Main.storyboard */,
 				3ABC2D3824A3B84D0024C9B8 /* Assets.xcassets */,
 				3ABC2D3A24A3B84D0024C9B8 /* LaunchScreen.storyboard */,
 				3ABC2D3D24A3B84D0024C9B8 /* Info.plist */,
@@ -203,7 +203,6 @@
 				E7CC86ECD2DB7134DC71CC02 /* Pods-Blockbuster-MobileTests.debug.xcconfig */,
 				84AE0DD253CD3508706F75C8 /* Pods-Blockbuster-MobileTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
