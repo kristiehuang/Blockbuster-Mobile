@@ -16,6 +16,7 @@
 		3ABC2D4924A3B84D0024C9B8 /* Blockbuster_MobileTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABC2D4824A3B84D0024C9B8 /* Blockbuster_MobileTests.m */; };
 		3ABC2D5424A3B84D0024C9B8 /* Blockbuster_MobileUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABC2D5324A3B84D0024C9B8 /* Blockbuster_MobileUITests.m */; };
 		3ABC2D6324A3BBAA0024C9B8 /* MoviesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABC2D6224A3BBAA0024C9B8 /* MoviesViewController.m */; };
+		3AC88ABF24A3F336003FDA23 /* MovieCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AC88ABE24A3F336003FDA23 /* MovieCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,8 @@
 		3ABC2D5524A3B84D0024C9B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3ABC2D6124A3BBAA0024C9B8 /* MoviesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MoviesViewController.h; sourceTree = "<group>"; };
 		3ABC2D6224A3BBAA0024C9B8 /* MoviesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MoviesViewController.m; sourceTree = "<group>"; };
+		3AC88ABD24A3F336003FDA23 /* MovieCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MovieCell.h; sourceTree = "<group>"; };
+		3AC88ABE24A3F336003FDA23 /* MovieCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MovieCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +153,8 @@
 		3ABC2D6524A3BC140024C9B8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3AC88ABD24A3F336003FDA23 /* MovieCell.h */,
+				3AC88ABE24A3F336003FDA23 /* MovieCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -292,6 +297,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3ABC2D2E24A3B84D0024C9B8 /* AppDelegate.m in Sources */,
+				3AC88ABF24A3F336003FDA23 /* MovieCell.m in Sources */,
 				3ABC2D6324A3BBAA0024C9B8 /* MoviesViewController.m in Sources */,
 				3ABC2D3F24A3B84D0024C9B8 /* main.m in Sources */,
 				3ABC2D3124A3B84D0024C9B8 /* SceneDelegate.m in Sources */,
