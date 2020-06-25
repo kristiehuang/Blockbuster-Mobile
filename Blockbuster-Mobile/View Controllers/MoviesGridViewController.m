@@ -1,38 +1,38 @@
 //
-//  MoviesViewController.m
+//  MoviesGridViewController.m
 //  Blockbuster-Mobile
 //
-//  Created by Kristie Huang on 6/24/20.
+//  Created by Kristie Huang on 6/25/20.
 //  Copyright © 2020 Kristie Huang. All rights reserved.
 //
 
-#import "MoviesViewController.h"
-#import "MovieCell.h"
+#import "MoviesGridViewController.h"
+#import "MovieCollectionViewCell.h"
 #import "UIImageView+AFNetworking.h"
 #import "DetailsViewController.h"
 
-@interface MoviesViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface MoviesGridViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 @property (nonatomic, strong) NSArray *movies;
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (nonatomic, strong) UIRefreshControl *refreshControl;
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+
 
 @end
 
-@implementation MoviesViewController
+@implementation MoviesGridViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    self.tableView.dataSource = self;
-    self.tableView.delegate = self;
+    self.collectionView.delegate = self;
+    self.collectionView.dataSource = self;
     [self fetchMovies];
     
-    self.refreshControl = [[UIRefreshControl alloc] init];
-    [self.refreshControl addTarget:self action:@selector(fetchMovies) forControlEvents:UIControlEventValueChanged];
-    [self.tableView insertSubview:self.refreshControl atIndex:0]; //programatically lay their view
-    
+    UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout*) self.collectionView.collectionViewLayout;
+    layout.minimumLineSpacing = 5;
+    layout.minimumInteritemSpacing = 5;
+    CGFloat postersPerLine = 2;
+    CGFloat viewWidth = self.collectionView.frame.size.width - (postersPerLine - 1)*layout.minimumInteritemSpacing;
+    layout.itemSize = CGSizeMake(viewWidth / postersPerLine, viewWidth / postersPerLine * 1.5);
 
-    
 }
 
 
@@ -42,13 +42,14 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    UITableViewCell *tappedCell = sender;
-    NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
-    NSDictionary *movie = self.movies[indexPath.row];
+    UICollectionViewCell *tappedCell = sender;
+    NSIndexPath *indexPath = [self.collectionView indexPathForCell:tappedCell];
+    NSDictionary *movie = self.movies[indexPath.item];
     DetailsViewController *detailVC = [segue destinationViewController];
     detailVC.movie = movie;
 }
 
+#pragma mark - Table View
 
 - (void)fetchMovies {
     NSURL *url = [NSURL URLWithString:@"https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed"];
@@ -80,36 +81,27 @@
                [self setMovies:(dataDictionary[@"results"])];
                //or self.movies = dataDictionary[@"results"];
                
-               [self.tableView reloadData];
+               [self.collectionView reloadData];
                //reload data after loading network calls
            }
-        [self.refreshControl endRefreshing];
        }];
     [task resume];
 }
 
-- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.movies.count;
-}
-
-- (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    MovieCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MovieCell"];
+- (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    MovieCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MovieCollectionViewCell" forIndexPath:indexPath];
     
-    NSDictionary *movie = self.movies[indexPath.row];
-//    cell.textLabel.text = movie[@"title"];
-    cell.titleLabel.text = movie[@"title"];
-    cell.synopsisLabel.text = movie[@"overview"];
+    NSDictionary *movie = self.movies[indexPath.item];
+//    cell.titleLabel.text = movie[@"title"];
     NSString *fullPosterUrlString = [@"https://image.tmdb.org/t/p/w500" stringByAppendingString:movie[@"poster_path"]];
     NSURL *posterURL = [NSURL URLWithString:fullPosterUrlString];
     cell.posterImage.image = nil;
     [cell.posterImage setImageWithURL:posterURL];
-    //adult boolean
-    //popularity
-    //backdrop
-
     return cell;
 }
 
-
+- (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return self.movies.count;
+}
 
 @end
