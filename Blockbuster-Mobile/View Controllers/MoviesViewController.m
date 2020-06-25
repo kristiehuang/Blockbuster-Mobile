@@ -56,6 +56,7 @@
         //this is completed affteeeerrr network request completed
         if (error != nil) {
                NSLog(@"%@", [error localizedDescription]);
+                //poppup error here
            }
            else {
                NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
