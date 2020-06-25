@@ -9,6 +9,7 @@
 #import "MoviesViewController.h"
 #import "MovieCell.h"
 #import "UIImageView+AFNetworking.h"
+#import "DetailsViewController.h"
 
 @interface MoviesViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) NSArray *movies;
@@ -31,15 +32,21 @@
     [self.tableView insertSubview:self.refreshControl atIndex:0]; //programatically lay their view
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    UITableViewCell *tappedCell = sender;
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
+    NSDictionary *movie = self.movies[indexPath.row];
+    DetailsViewController *detailVC = [segue destinationViewController];
+    detailVC.movie = movie;
+    NSLog(@"going to detail");
 }
-*/
+
 
 - (void)fetchMovies {
     NSURL *url = [NSURL URLWithString:@"https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed"];
@@ -76,7 +83,6 @@
 //    cell.textLabel.text = movie[@"title"];
     cell.titleLabel.text = movie[@"title"];
     cell.synopsisLabel.text = movie[@"overview"];
-//    cell.posterImage.image = [UIImage url]
     NSString *fullPosterUrlString = [@"https://image.tmdb.org/t/p/w500" stringByAppendingString:movie[@"poster_path"]];
     NSURL *posterURL = [NSURL URLWithString:fullPosterUrlString];
     cell.posterImage.image = nil;

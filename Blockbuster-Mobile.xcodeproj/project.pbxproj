@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A77A5F524A401470093C262 /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A77A5F424A401470093C262 /* DetailsViewController.m */; };
 		3ABC2D2E24A3B84D0024C9B8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABC2D2D24A3B84D0024C9B8 /* AppDelegate.m */; };
 		3ABC2D3124A3B84D0024C9B8 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABC2D3024A3B84D0024C9B8 /* SceneDelegate.m */; };
 		3ABC2D3724A3B84D0024C9B8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ABC2D3524A3B84D0024C9B8 /* Main.storyboard */; };
@@ -42,6 +43,8 @@
 /* Begin PBXFileReference section */
 		12519C8FEDCE1B25C22AB1FA /* Pods-Blockbuster-Mobile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blockbuster-Mobile.debug.xcconfig"; path = "Target Support Files/Pods-Blockbuster-Mobile/Pods-Blockbuster-Mobile.debug.xcconfig"; sourceTree = "<group>"; };
 		2641CA8EF4F159F72E91C51F /* Pods-Blockbuster-Mobile-Blockbuster-MobileUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blockbuster-Mobile-Blockbuster-MobileUITests.release.xcconfig"; path = "Target Support Files/Pods-Blockbuster-Mobile-Blockbuster-MobileUITests/Pods-Blockbuster-Mobile-Blockbuster-MobileUITests.release.xcconfig"; sourceTree = "<group>"; };
+		3A77A5F324A401470093C262 /* DetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
+		3A77A5F424A401470093C262 /* DetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
 		3ABC2D2924A3B84D0024C9B8 /* Blockbuster-Mobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Blockbuster-Mobile.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3ABC2D2C24A3B84D0024C9B8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3ABC2D2D24A3B84D0024C9B8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -163,6 +166,8 @@
 			children = (
 				3ABC2D6124A3BBAA0024C9B8 /* MoviesViewController.h */,
 				3ABC2D6224A3BBAA0024C9B8 /* MoviesViewController.m */,
+				3A77A5F324A401470093C262 /* DetailsViewController.h */,
+				3A77A5F424A401470093C262 /* DetailsViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -447,6 +452,7 @@
 				3ABC2D2E24A3B84D0024C9B8 /* AppDelegate.m in Sources */,
 				3AC88ABF24A3F336003FDA23 /* MovieCell.m in Sources */,
 				3ABC2D6324A3BBAA0024C9B8 /* MoviesViewController.m in Sources */,
+				3A77A5F524A401470093C262 /* DetailsViewController.m in Sources */,
 				3ABC2D3F24A3B84D0024C9B8 /* main.m in Sources */,
 				3ABC2D3124A3B84D0024C9B8 /* SceneDelegate.m in Sources */,
 			);
