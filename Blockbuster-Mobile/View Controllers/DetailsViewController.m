@@ -8,6 +8,7 @@
 
 #import "DetailsViewController.h"
 #import "UIImageView+AFNetworking.h"
+#import "TrailerWebViewController.h"
 
 @interface DetailsViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *const posterView;
@@ -17,6 +18,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *const releaseDateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *const ratingLabel;
 @property (weak, nonatomic) IBOutlet UILabel *const genreLabel;
+- (IBAction)trailerButtonClicked:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *trailerButton;
 
 @end
 
@@ -43,17 +46,33 @@
 
 }
 
+
 - (void)fetchData {
     
 }
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-}
-*/
 
+    self.trailerButton = sender;
+    NSDictionary *movie = self.movie;
+    TrailerWebViewController *webVC = [segue destinationViewController];
+    webVC.videos = [self getVideos];
+}
+
+- (NSDictionary*)getVideos {
+    //fetch data
+    NSInteger movie_id = self.movie[@"id"]; //wrong type
+    //fetch data from video endpoint using /movie/movie_id/videos
+    //videos[key[
+    return self.movie[@"key"];
+}
+
+
+- (IBAction)trailerButtonClicked:(id)sender {
+}
 @end
