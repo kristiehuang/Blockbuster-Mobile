@@ -10,13 +10,13 @@
 #import "UIImageView+AFNetworking.h"
 
 @interface DetailsViewController ()
-@property (weak, nonatomic) IBOutlet UIImageView *posterView;
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (weak, nonatomic) IBOutlet UILabel *synopsisLabel;
-@property (weak, nonatomic) IBOutlet UILabel *languageLabel;
-@property (weak, nonatomic) IBOutlet UILabel *releaseDateLabel;
-@property (weak, nonatomic) IBOutlet UILabel *ratingLabel;
-@property (weak, nonatomic) IBOutlet UILabel *genreLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *const posterView;
+@property (weak, nonatomic) IBOutlet UILabel *const titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *const synopsisLabel;
+@property (weak, nonatomic) IBOutlet UILabel *const languageLabel;
+@property (weak, nonatomic) IBOutlet UILabel *const releaseDateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *const ratingLabel;
+@property (weak, nonatomic) IBOutlet UILabel *const genreLabel;
 
 @end
 
