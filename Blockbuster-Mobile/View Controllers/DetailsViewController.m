@@ -66,9 +66,6 @@
 - (NSDictionary*)getVideos {
     //fetch data
     NSNumber *movie_id = self.movie[@"id"]; //wrong type
-    NSLog(@"%@", [self.movie[@"id"] class]);
-    NSLog(@"%@", movie_id);
-
     //fetch data from video endpoint using /movie/movie_id/videos
     //videos[key[
     return self.movie[@"videos"];
