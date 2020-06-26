@@ -58,18 +58,20 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 
-    self.trailerButton = sender;
-    NSDictionary *movie = self.movie;
+    //self.trailerButton = sender;
     TrailerWebViewController *webVC = [segue destinationViewController];
     webVC.videos = [self getVideos];
 }
 
 - (NSDictionary*)getVideos {
     //fetch data
-    NSInteger movie_id = self.movie[@"id"]; //wrong type
+    NSNumber *movie_id = self.movie[@"id"]; //wrong type
+    NSLog(@"%@", [self.movie[@"id"] class]);
+    NSLog(@"%@", movie_id);
+
     //fetch data from video endpoint using /movie/movie_id/videos
     //videos[key[
-    return self.movie[@"key"];
+    return self.movie[@"videos"];
 }
 
 

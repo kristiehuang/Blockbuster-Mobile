@@ -17,7 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSLog(@"%@", self.videoUrlKey);
+    NSLog(@"%@", self.videos);
     const NSString *baseUrl = @"https://www.youtube.com/watch?v=";
     const NSString *urlString = [baseUrl stringByAppendingString:@"key"];
     const NSURL *requestURL = [NSURL URLWithString:urlString];
