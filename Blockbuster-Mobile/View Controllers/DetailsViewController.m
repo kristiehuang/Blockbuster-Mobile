@@ -21,6 +21,8 @@
 - (IBAction)trailerButtonClicked:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *trailerButton;
 
+@property (weak, nonatomic) NSArray *const videos;
+
 @end
 
 @implementation DetailsViewController
@@ -58,19 +60,11 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 
-    //self.trailerButton = sender;
+    //i want to load before segueing
     TrailerWebViewController *webVC = [segue destinationViewController];
-    webVC.videos = [self getVideos];
+    webVC.movie = self.movie;
 }
 
-- (NSDictionary*)getVideos {
-    //fetch data
-    NSNumber *movie_id = self.movie[@"id"]; //wrong type
-    NSLog(@"What it dooo");
-    //fetch data from video endpoint using /movie/movie_id/videos
-    //videos[key[
-    return self.movie[@"videos"];
-}
 
 
 - (IBAction)trailerButtonClicked:(id)sender {

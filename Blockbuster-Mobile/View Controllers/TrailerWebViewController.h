@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TrailerWebViewController : UIViewController
-@property (strong, nonatomic) NSDictionary *videos;
+@property (strong, nonatomic) NSDictionary *movie;
 
 @end
 

@@ -11,19 +11,73 @@
 
 @interface TrailerWebViewController ()
 @property (weak, nonatomic) IBOutlet WKWebView *webView;
+@property (weak, nonatomic) NSArray *videos;
 @end
 
 @implementation TrailerWebViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSLog(@"%@", self.videos);
-    const NSString *baseUrl = @"https://www.youtube.com/watch?v=";
-    const NSString *urlString = [baseUrl stringByAppendingString:@"key"];
-    const NSURL *requestURL = [NSURL URLWithString:urlString];
-    
+ 
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
+    [self getVideos];
+
+}
+
+
+- (void)getVideos {
+    //fetch data
+    NSNumber *movie_id = self.movie[@"id"]; //wrong type
+    NSURL *url = [NSURL URLWithString:
+                  [NSString stringWithFormat: @"https://api.themoviedb.org/3/movie/%@/videos?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed", movie_id]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
+    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+            //this is completed affteeeerrr network request completed
+            if (error != nil) {
+                NSLog(@"%@", [error localizedDescription]);
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Oops!" message:[error localizedDescription] preferredStyle:(UIAlertControllerStyleAlert)];
+                UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                }];
+                UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Try again" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    [self getVideos];
+                }];
+                [alert addAction:cancelAction];
+                [alert addAction:okAction];
+                [self presentViewController:alert animated:YES completion:^{
+                }];
+           }
+           else {
+               NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+               NSLog(@"%@", dataDictionary);
+               self.videos = dataDictionary[@"results"];
+               
+               if (self.videos.count == 0) {
+                   NSLog(@"%@", [error localizedDescription]);
+                   UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"There were no trailers!" message:[error localizedDescription] preferredStyle:(UIAlertControllerStyleAlert)];
+                   UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                   }];
+                   [alert addAction:cancelAction];
+                   [self presentViewController:alert animated:YES completion:^{
+                   }];
+               } else {
+                   const NSString *baseUrl = @"https://www.youtube.com/watch?v=";
+                   const NSString *urlString = [baseUrl stringByAppendingString:
+                                                 [NSString stringWithFormat:@"%@", self.videos[0][@"key"]]];
+                   NSURL *requestURL = [NSURL URLWithString:urlString];
+                   NSURLRequest *request = [NSURLRequest requestWithURL:requestURL cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
+                   [self.webView loadRequest:request];
+               }
+           }
+       }];
+    [task resume];
+    //fetch data from video endpoint using /movie/movie_id/videos
+    //videos[key[
+
+}
 /*
 #pragma mark - Navigation
 
