@@ -100,7 +100,7 @@
     MovieCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MovieCell"];
     
     NSDictionary *movie = self.filteredMovies[indexPath.row];
-//    cell.textLabel.text = movie[@"title"];
+    cell.ratingLabel.text = [NSString stringWithFormat:@"%@ stars", movie[@"vote_average"]];
     cell.titleLabel.text = movie[@"title"];
     cell.synopsisLabel.text = movie[@"overview"];
     NSString *fullPosterUrlString = [@"https://image.tmdb.org/t/p/w500" stringByAppendingString:movie[@"poster_path"]];

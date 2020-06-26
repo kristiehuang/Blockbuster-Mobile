@@ -30,11 +30,13 @@
     [self fetchMovies];
     
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout*) self.collectionView.collectionViewLayout;
-    layout.minimumLineSpacing = 5;
-    layout.minimumInteritemSpacing = 5;
+    layout.minimumLineSpacing = 20;
+    layout.minimumInteritemSpacing = 20;
     CGFloat postersPerLine = 2;
     CGFloat viewWidth = self.collectionView.frame.size.width - (postersPerLine - 1)*layout.minimumInteritemSpacing;
     layout.itemSize = CGSizeMake(viewWidth / postersPerLine, viewWidth / postersPerLine * 1.5);
+    
+    
 
 }
 
@@ -101,6 +103,18 @@
     NSURL *posterURL = [NSURL URLWithString:fullPosterUrlString];
     cell.posterImage.image = nil;
     [cell.posterImage setImageWithURL:posterURL];
+    
+    cell.contentView.layer.cornerRadius = 10.0f;
+    cell.contentView.layer.borderWidth = 1.0f;
+    cell.contentView.layer.borderColor = [UIColor clearColor].CGColor;
+    cell.contentView.layer.masksToBounds = YES;
+
+    cell.layer.shadowColor = [UIColor blackColor].CGColor;
+    cell.layer.shadowOffset = CGSizeMake(0, 2.0f);
+    cell.layer.shadowRadius = 2.0f;
+    cell.layer.shadowOpacity = 0.3f;
+    cell.layer.masksToBounds = NO;
+    cell.layer.shadowPath = [UIBezierPath bezierPathWithRoundedRect:cell.bounds cornerRadius:cell.contentView.layer.cornerRadius].CGPath;
     return cell;
 }
 

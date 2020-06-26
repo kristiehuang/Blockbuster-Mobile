@@ -36,7 +36,6 @@
     NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-            //this is completed affteeeerrr network request completed
             if (error != nil) {
                 NSLog(@"%@", [error localizedDescription]);
                 UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Oops!" message:[error localizedDescription] preferredStyle:(UIAlertControllerStyleAlert)];
@@ -74,8 +73,6 @@
            }
        }];
     [task resume];
-    //fetch data from video endpoint using /movie/movie_id/videos
-    //videos[key[
 
 }
 /*
