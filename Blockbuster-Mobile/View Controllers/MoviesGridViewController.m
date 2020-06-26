@@ -45,8 +45,6 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
     UICollectionViewCell *tappedCell = sender;
     NSIndexPath *indexPath = [self.collectionView indexPathForCell:tappedCell];
     NSDictionary *movie = self.filteredMovies[indexPath.item];
@@ -61,34 +59,24 @@
     NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-            //this is completed affteeeerrr network request completed
             if (error != nil) {
-                NSLog(@"%@", [error localizedDescription]);
-                //poppup error here
                 UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Oops!" message:[error localizedDescription] preferredStyle:(UIAlertControllerStyleAlert)];
                 UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-                    //doing nothing will dismiss
                 }];
                 UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Try again" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                    //do a thing
                     [self fetchMovies];
                 }];
                 [alert addAction:cancelAction];
                 [alert addAction:okAction];
                 [self presentViewController:alert animated:YES completion:^{
-                    //do things after finished presenting
                 }];
            }
            else {
-               NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-               NSLog(@"%@", dataDictionary);
-               
+               NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];               
                [self setMovies:(dataDictionary[@"results"])];
-               //or self.movies = dataDictionary[@"results"];
                self.filteredMovies = self.movies;
 
                [self.collectionView reloadData];
-               //reload data after loading network calls
            }
        }];
     [task resume];
@@ -98,7 +86,6 @@
     MovieCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MovieCollectionViewCell" forIndexPath:indexPath];
     
     NSDictionary *movie = self.filteredMovies[indexPath.item];
-//    cell.titleLabel.text = movie[@"title"];
     NSString *fullPosterUrlString = [@"https://image.tmdb.org/t/p/w500" stringByAppendingString:movie[@"poster_path"]];
     NSURL *posterURL = [NSURL URLWithString:fullPosterUrlString];
     cell.posterImage.image = nil;
@@ -131,14 +118,10 @@
             return [searched containsString:[searchText lowercaseString]];
         }];
         self.filteredMovies = [self.movies filteredArrayUsingPredicate:predicate];
-        
-        NSLog(@"%@", self.filteredMovies);
-        
     }
     else {
         self.filteredMovies = self.movies;
     }
-    
     [self.collectionView reloadData];
 }
 

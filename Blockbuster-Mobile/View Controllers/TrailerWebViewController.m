@@ -27,9 +27,7 @@
 
 }
 
-
 - (void)getVideos {
-    //fetch data
     NSNumber *movie_id = self.movie[@"id"]; //wrong type
     NSURL *url = [NSURL URLWithString:
                   [NSString stringWithFormat: @"https://api.themoviedb.org/3/movie/%@/videos?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed", movie_id]];
@@ -37,7 +35,6 @@
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
             if (error != nil) {
-                NSLog(@"%@", [error localizedDescription]);
                 UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Oops!" message:[error localizedDescription] preferredStyle:(UIAlertControllerStyleAlert)];
                 UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
                 }];
@@ -51,11 +48,9 @@
            }
            else {
                NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-               NSLog(@"%@", dataDictionary);
                self.videos = dataDictionary[@"results"];
                
                if (self.videos.count == 0) {
-                   NSLog(@"%@", [error localizedDescription]);
                    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"There were no trailers!" message:[error localizedDescription] preferredStyle:(UIAlertControllerStyleAlert)];
                    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
                    }];
