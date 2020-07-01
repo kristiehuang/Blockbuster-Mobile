@@ -8,12 +8,14 @@
 
 #import "MoviesViewController.h"
 #import "MovieCell.h"
+#import "Movie.h"
 #import "UIImageView+AFNetworking.h"
 #import "DetailsViewController.h"
+#import "MovieAPIManager.h"
 
 @interface MoviesViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate>
-@property (nonatomic, strong) NSArray<NSDictionary*> *movies;
-@property (nonatomic, strong) NSArray<NSDictionary*> *filteredMovies;
+@property (nonatomic, strong) NSMutableArray<Movie*> *movies;
+@property (nonatomic, strong) NSMutableArray<Movie*> *filteredMovies;
 @property (weak, nonatomic) IBOutlet UITableView *const tableView;
 @property (nonatomic, strong) UIRefreshControl *const refreshControl;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
@@ -27,6 +29,8 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.searchBar.delegate = self;
+    self.movies = [[NSMutableArray alloc] init];
+    self.filteredMovies = [[NSMutableArray alloc] init];
     [self fetchMovies];
     
     self.refreshControl = [[UIRefreshControl alloc] init];
@@ -41,18 +45,17 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     UITableViewCell *tappedCell = sender;
     NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
-    NSDictionary *movie = self.filteredMovies[indexPath.row];
+    Movie *movie = self.filteredMovies[indexPath.row];
     DetailsViewController *detailVC = [segue destinationViewController];
     detailVC.movie = movie;
 }
 
 
 - (void)fetchMovies {
-    NSURL *url = [NSURL URLWithString:@"https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed"];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
-    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-            if (error != nil) {
+    MovieAPIManager *manager = [MovieAPIManager new];
+    [manager fetchNowPlaying:^(NSArray * _Nonnull movies, NSError * _Nonnull error) {
+        
+        if (error != nil) {
                 UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Oops!" message:[error localizedDescription] preferredStyle:(UIAlertControllerStyleAlert)];
                 UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
                 }];
@@ -65,14 +68,22 @@
                 }];
            }
            else {
-               NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];               
-               [self setMovies:(dataDictionary[@"results"])];
+               self.movies = [[NSMutableArray alloc] init];
+
+               for (NSDictionary *dict in movies) {
+                   Movie *m = [[Movie alloc] initWithDictionary:dict];
+                   [self.movies addObject:m];
+               }
                self.filteredMovies = self.movies;
-               [self.tableView reloadData];
+
+               [self.tableView performSelectorOnMainThread:NSSelectorFromString(@"reloadData") withObject:nil waitUntilDone:YES];
+//               [self.tableView reloadData];
+
            }
-        [self.refreshControl endRefreshing];
-       }];
-    [task resume];
+
+    }];
+    [self.refreshControl endRefreshing];
+ 
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -82,26 +93,20 @@
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     MovieCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MovieCell"];
     
-    NSDictionary *movie = self.filteredMovies[indexPath.row];
-    cell.ratingLabel.text = [NSString stringWithFormat:@"%@ stars", movie[@"vote_average"]];
-    cell.titleLabel.text = movie[@"title"];
-    cell.synopsisLabel.text = movie[@"overview"];
-    NSString *fullPosterUrlString = [@"https://image.tmdb.org/t/p/w500" stringByAppendingString:movie[@"poster_path"]];
-    NSURL *posterURL = [NSURL URLWithString:fullPosterUrlString];
-    cell.posterImage.image = nil;
-    [cell.posterImage setImageWithURL:posterURL];
-
+    [cell setMovie:self.filteredMovies[indexPath.row]];
+    
     return cell;
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     if (searchText.length != 0) {
-        NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(id  _Nullable evaluatedObject, NSDictionary<NSString *,id> * _Nullable bindings) {
-            NSString *searched = [[evaluatedObject[@"title"] stringByAppendingString:
-                                  [NSString stringWithFormat:@" %@", evaluatedObject[@"overview"]]] lowercaseString];
+        NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(Movie* evaluatedObject, NSDictionary<NSString *,id> * _Nullable bindings) {
+            NSString *searched = [[evaluatedObject.title stringByAppendingString:
+                                   [NSString stringWithFormat:@" %@", evaluatedObject.synopsis]] lowercaseString];
             return [searched containsString:[searchText lowercaseString]];
         }];
-        self.filteredMovies = [self.movies filteredArrayUsingPredicate:predicate];
+        self.filteredMovies = [NSMutableArray arrayWithArray:[self.movies filteredArrayUsingPredicate:predicate]];
+        
     } else {
         self.filteredMovies = self.movies;
     }

@@ -28,7 +28,7 @@
 }
 
 - (void)getVideos {
-    NSNumber *movie_id = self.movie[@"id"]; //wrong type
+    NSNumber *movie_id = self.movie.movieId;
     NSURL *url = [NSURL URLWithString:
                   [NSString stringWithFormat: @"https://api.themoviedb.org/3/movie/%@/videos?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed", movie_id]];
     NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];

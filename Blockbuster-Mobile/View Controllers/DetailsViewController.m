@@ -29,18 +29,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSString *fullPosterUrlString = [@"https://image.tmdb.org/t/p/w500" stringByAppendingString:self.movie[@"poster_path"]];
-    NSURL *posterURL = [NSURL URLWithString:fullPosterUrlString];
-    [self.posterView setImageWithURL:posterURL];
 
-    self.titleLabel.text = self.movie[@"title"];
-    self.synopsisLabel.text = self.movie[@"overview"];
-    self.languageLabel.text = self.movie[@"original_language"]; //might need to reformt
-    self.releaseDateLabel.text = [@"Released: " stringByAppendingString:
-                                  self.movie[@"release_date"]]; //reformat dates
-    self.ratingLabel.text = [@"Rating: " stringByAppendingString:
-                             [NSString stringWithFormat: @"%@", self.movie[@"vote_average"]]
-                             ];
+    if (self.movie.posterUrl != nil) {
+        [self.posterView setImageWithURL:self.movie.posterUrl];
+    }
+
+    self.titleLabel.text = self.movie.title;
+    self.synopsisLabel.text = self.movie.synopsis;
+    self.languageLabel.text = self.movie.language;
+    self.releaseDateLabel.text = self.movie.releaseDate;
+    self.ratingLabel.text = self.movie.rating;
 
 }
 

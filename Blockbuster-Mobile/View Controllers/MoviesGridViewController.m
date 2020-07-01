@@ -10,10 +10,11 @@
 #import "MovieCollectionViewCell.h"
 #import "UIImageView+AFNetworking.h"
 #import "DetailsViewController.h"
+#import "Movie.h"
 
 @interface MoviesGridViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate>
-@property (nonatomic, strong) NSArray<NSDictionary*> *movies;
-@property (nonatomic, strong) NSArray<NSDictionary*> *filteredMovies;
+@property (nonatomic, strong) NSMutableArray<Movie*> *movies;
+@property (nonatomic, strong) NSMutableArray<Movie*> *filteredMovies;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
@@ -27,6 +28,10 @@
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
     self.searchBar.delegate = self;
+    
+    self.movies = [[NSMutableArray alloc] init];
+    self.filteredMovies = [[NSMutableArray alloc] init];
+
     [self fetchMovies];
     
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout*) self.collectionView.collectionViewLayout;
@@ -47,7 +52,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     UICollectionViewCell *tappedCell = sender;
     NSIndexPath *indexPath = [self.collectionView indexPathForCell:tappedCell];
-    NSDictionary *movie = self.filteredMovies[indexPath.item];
+    Movie *movie = self.filteredMovies[indexPath.item];
     DetailsViewController *detailVC = [segue destinationViewController];
     detailVC.movie = movie;
 }
@@ -72,8 +77,13 @@
                 }];
            }
            else {
-               NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];               
-               [self setMovies:(dataDictionary[@"results"])];
+               NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+               self.movies = [[NSMutableArray alloc] init];
+
+               for (NSDictionary *dict in dataDictionary[@"results"]) {
+                   Movie *m = [[Movie alloc] initWithDictionary:dict];
+                   [self.movies addObject:m];
+               }
                self.filteredMovies = self.movies;
 
                [self.collectionView reloadData];
@@ -85,11 +95,12 @@
 - (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
     MovieCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MovieCollectionViewCell" forIndexPath:indexPath];
     
-    NSDictionary *movie = self.filteredMovies[indexPath.item];
-    NSString *fullPosterUrlString = [@"https://image.tmdb.org/t/p/w500" stringByAppendingString:movie[@"poster_path"]];
-    NSURL *posterURL = [NSURL URLWithString:fullPosterUrlString];
+    Movie *movie = self.filteredMovies[indexPath.item];
     cell.posterImage.image = nil;
-    [cell.posterImage setImageWithURL:posterURL];
+    if (movie.posterUrl != nil) {
+        [cell.posterImage setImageWithURL:movie.posterUrl];
+
+    }
     
     cell.contentView.layer.cornerRadius = 10.0f;
     cell.contentView.layer.borderWidth = 1.0f;
@@ -112,12 +123,12 @@
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     if (searchText.length != 0) {
         
-        NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(NSDictionary *evaluatedObject, NSDictionary *bindings) {
-            NSString *searched = [[evaluatedObject[@"title"] stringByAppendingString:
-                                  [NSString stringWithFormat:@" %@", evaluatedObject[@"overview"]]] lowercaseString];
+        NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(Movie *evaluatedObject, NSDictionary *bindings) {
+            NSString *searched = [[evaluatedObject.title stringByAppendingString:
+                                   [NSString stringWithFormat:@" %@", evaluatedObject.synopsis]] lowercaseString];
             return [searched containsString:[searchText lowercaseString]];
         }];
-        self.filteredMovies = [self.movies filteredArrayUsingPredicate:predicate];
+        self.filteredMovies = [NSMutableArray arrayWithArray:[self.movies filteredArrayUsingPredicate:predicate]];
     }
     else {
         self.filteredMovies = self.movies;
